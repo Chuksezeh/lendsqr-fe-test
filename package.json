@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@heroui/dropdown": "^2.3.24",
+    "react-bootstrap": "^2.10.10"
+  }
+}
