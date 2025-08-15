@@ -157,17 +157,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
           </li>
           
           
-          
-          
-          
-          
-
-
-
-
-
-
-        </ul>
+          </ul>
       </nav>
     </aside>
   );

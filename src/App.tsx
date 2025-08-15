@@ -11,19 +11,8 @@ const App: React.FC = () => {
 
   return (
     <>
-    {/* <div className="app">
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <div className="main-content">
-        <Navbar toggleSidebar={toggleSidebar} />
-        <div className="content">
-          <Dashboard />
-        </div>
-      </div>
-    </div> */}
 
-  
-
-  <Router>
+   <Router>
       
             <Routes>
               <Route path="/" element={<Home />} />

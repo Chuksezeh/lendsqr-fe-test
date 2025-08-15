@@ -34,6 +34,8 @@ const Dashboard: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth >= 768);
   const [showUserDetails, setShowUserDetails] = useState(false);
   const paginationRef = useRef<HTMLDivElement>(null);
+  const [openFilter, setOpenFilter] = useState(false);
+  const filterRef = useRef<HTMLDivElement>(null);
 
   const usersPerPage = 20;
   const indexOfLastUser = currentPage * usersPerPage;
@@ -55,6 +57,26 @@ const Dashboard: React.FC = () => {
       setUserLoading(false);
     };
     fetchUsers();
+  }, []);
+
+  // Filter handling
+  const toggleFilter = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setOpenFilter(!openFilter);
+  };
+
+  // Close filter when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
+        setOpenFilter(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   // Auto-scroll to active pagination button
@@ -101,7 +123,19 @@ const Dashboard: React.FC = () => {
     setUserDetails(null);
   };
 
-  // Generate pagination buttons with ellipsis for large ranges
+  // Filter form handlers
+  const handleFilterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Implement your filter logic here
+    setOpenFilter(false);
+  };
+
+  const handleFilterReset = () => {
+    // Reset your filter logic here
+    setOpenFilter(false);
+  };
+
+  // Generate pagination buttons 
   const getPageButtons = () => {
     const totalPages = Math.ceil(users.length / usersPerPage);
     const buttons = [];
@@ -175,7 +209,73 @@ const Dashboard: React.FC = () => {
                 <table className="user-table">
                   <thead>
                     <tr className="thead">
-                      <th scope="col" className="thead-item">ORGANIZATION <TableIcon size={20} /></th>
+                      <th scope="col" className="thead-item" style={{cursor: "pointer"}} onClick={toggleFilter}>
+                        ORGANIZATION <TableIcon size={20} />
+                        {openFilter && (
+                          <div 
+                            className="filter-dropdown"
+                            ref={filterRef}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <form className="filter-form" onSubmit={handleFilterSubmit}>
+                              <label htmlFor="organization" className="filter-label">Select Organization</label>
+                              <br />
+                              <select id="organization" className="filter-select filter-input">
+                                <option value="" disabled>Select</option>
+                                <option value="org1">Organization 1</option>
+                                <option value="org2">Organization 2</option>
+                                <option value="org3">Organization 3</option>
+                              </select>
+                              <br />
+                              <br />
+                              <label htmlFor="username" className="filter-label">User Name</label>
+                              <br />
+                              <input type="text" id="username" className="filter-input" placeholder="User" />
+                              <br />
+                              <br />
+                              <label htmlFor="email" className="filter-label">Email</label>
+                              <br />
+                              <input type="text" id="email" className="filter-input" placeholder="Email" />
+                              <br />
+                              <br />
+                              <label htmlFor="date" className="filter-label">Date</label>
+                              <br />
+                              <input type="date" id="date" className="filter-input" placeholder="Date" />
+                              <br />
+                              <br />
+                              <label htmlFor="phone" className="filter-label">Phone number</label>
+                              <br />
+                              <input type="text" id="phone" className="filter-input" placeholder="Phone number" />
+                              <br />
+                              <br />
+                              <label htmlFor="status" className="filter-label">Status</label>
+                              <br />
+                              <select id="status" className="filter-select filter-input">
+                                <option value="" disabled>Select</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                              </select>
+                              <br />
+                              <br />
+                              <div className="filter-btns">
+                                <button 
+                                  type="button" 
+                                  className="filter-btn-reset"
+                                  onClick={handleFilterReset}
+                                >
+                                  Reset
+                                </button>
+                                <button 
+                                  type="submit" 
+                                  className="filter-btn"
+                                >
+                                  Apply
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        )}
+                      </th>
                       <th scope="col" className="thead-item">USER NAME <TableIcon size={20} /></th>
                       <th scope="col" className="thead-item">EMAIL <TableIcon size={20} /></th>
                       <th scope="col" className="thead-item">PHONE NUMBER <TableIcon size={20} /></th>

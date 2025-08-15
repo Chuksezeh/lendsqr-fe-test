@@ -4,7 +4,7 @@ import { User } from "../../types/user";
 import imagePlaceHolder from "../../Images/image-placeholder-removebg-preview.png";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
-// Define the User interface
+
 
 const BackIcon = FaArrowLeftLong as React.ComponentType<{ size?: number }>;
 
