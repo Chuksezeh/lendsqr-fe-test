@@ -1,0 +1,193 @@
+.details-container{
+    width: 100%;
+    display: flex;
+   
+    
+    flex-direction: column;
+    padding: 1rem;
+
+    .stat-card-details{
+        width: 100%;
+       
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        // height: 200px;
+          box-shadow: 0 4px 6px  rgba(1, 1, 1, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+        .details-list{
+          list-style: none;
+          text-decoration: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+        justify-content: space-between;
+         
+        //   justify-content: center;
+        //    flex-wrap: wrap;
+          
+          gap: 0.5rem;
+          font-size: 1rem;
+          color: #555;
+
+          li {
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+             font-size: 1.1rem;
+            color: #213F7D;
+            span {
+            //   font-weight: bold;
+              color: #39CDCC;
+            }
+          }
+           
+        }
+    }
+   .user-details-header-top{
+      display: flex;
+    //   background-color: aqua;
+      gap: 65%; 
+      padding: 20px  0  20px 0  ;
+      
+      .user-details-header-btns{
+        display: flex;
+        gap: 20px;
+        .hearder-btn1{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: none;
+          background-color: white;
+          color: red;
+          cursor: pointer;
+          font-weight: bold;
+          border: solid red;
+        }
+         .hearder-btn2{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: none;
+          background-color: white;
+          color: #39CDCC;
+          cursor: pointer;
+          border: solid #39CDCC;
+          font-weight: bold;
+        }
+      }
+      
+   }
+   .details-prof-container{
+      display: flex;
+      align-items: center;
+
+      gap: 8rem;
+      img{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .place-image-details{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      h3{
+        color: #213F7D;
+      }
+      p{
+        color: #213F7D;
+      }
+      .top-line{
+        width: 2px;
+        height: 50px;
+       color: black;
+        background-color: #ccc;
+        margin: 10px 0;
+      }
+
+      
+    }
+    .details-hr{
+           margin: 20px  0  20px 0 ;
+              border: solid 1px #55555511;
+           color:#55555511 !important;
+        }
+    .details-title-box{
+            padding-bottom: 20px;
+            color:  #213F7D;
+        }
+    .details-list-names{
+        display: flex;
+        // flex-direction: column ;
+        gap: 15%;
+        font-size: 1.1rem;
+        color: #555;
+        padding-bottom: 15px;
+        p{
+            font-weight: bold;
+            color: #213F7D;
+        }
+        
+        
+    }
+   }
+    
+@media(max-width: 768px) {
+    .details-container {
+        padding: 0.5rem;
+    }
+    
+.user-details-header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+
+     .details-prof-container{
+      display: flex !important;
+      flex-direction: column;
+      gap: 1rem !important;
+      flex-direction: wrap;
+       align-items: start !important;
+      
+}
+.top-line{
+    display: none;
+}
+ .details-list{
+          list-style: none;
+          text-decoration: none;
+          padding: auto;
+          margin: auto;
+          display: grid !important;
+            grid-template-columns: 1fr 1fr;
+       
+         
+          gap: 0.5rem;
+          font-size: 1rem;
+          color: #555;
+
+          
+        }
+        .details-list-names{
+        display: flex;
+        flex-direction: column;
+       
+        font-size: 1.1rem;
+        color: #555;
+        padding-bottom: 15px;
+        p{
+            font-weight: bold;
+            color: #213F7D;
+        }
+        .details-list-names-div{
+            padding: 10px;
+        }
+        
+        
+    }
+}
