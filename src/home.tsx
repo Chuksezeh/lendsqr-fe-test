@@ -129,6 +129,7 @@ const Home: React.FC = () => {
                     </div>
 
                     <button 
+                        style={{ cursor: isButtonDisabled ? "not-allowed" : "pointer" }}
                         type="submit"
                         className={`login-btn ${isButtonDisabled ? "disabled" : ""}`}
                         disabled={isButtonDisabled}
