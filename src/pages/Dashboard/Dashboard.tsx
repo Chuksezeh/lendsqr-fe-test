@@ -126,16 +126,16 @@ const Dashboard: React.FC = () => {
   // Filter form handlers
   const handleFilterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Implement your filter logic here
+   
     setOpenFilter(false);
   };
 
   const handleFilterReset = () => {
-    // Reset your filter logic here
+  
     setOpenFilter(false);
   };
 
-  // Generate pagination buttons 
+  // Pagination button generation
   const getPageButtons = () => {
     const totalPages = Math.ceil(users.length / usersPerPage);
     const buttons = [];
